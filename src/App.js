@@ -1,13 +1,16 @@
 import React from 'react';
 import logo from './logo.svg';
 import Left from './Left'
-import './App.css';
+import { Button } from 'antd';
+import './index.less';
 
 function App() {
   return (
-    <div className="App">
+    <div className="tt">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        {/* <img src={logo} className="App-logo" alt="logo" /> */}
+        <Button type="primary">Primary</Button>
+        <h1 className="tt">sdasdasddas</h1>
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
