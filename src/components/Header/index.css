@@ -1,0 +1,50 @@
+/** 常用色值 **/
+/** 常用字体大小 **/
+.header {
+  background-color: #ffffff;
+}
+.header .userLine {
+  padding: 0 20px;
+  text-align: right;
+  line-height: 4em;
+  border-bottom: 1px solid #f9c700;
+}
+.header .userLine a {
+  color: #f9c700;
+  margin-left: 40px;
+}
+.header .nav-list {
+  padding: 0 20px;
+  text-align: center;
+  line-height: 3em;
+  align-items: center;
+}
+.header .nav-list .nav-list-left {
+  position: relative;
+}
+.header .nav-list .nav-list-left span {
+  font-size: 18px;
+}
+.header .nav-list .nav-list-left span:after {
+  content: '';
+  position: absolute;
+  border-top: 8px solid #ffffff;
+  border-right: 8px solid #ffffff;
+  border-bottom: 8px solid transparent;
+  border-left: 8px solid transparent;
+  transform-origin: right top;
+  transform: rotate(135deg);
+  left: calc(32%);
+  bottom: -26px;
+}
+.header .nav-list .nav-list-right {
+  text-align: right;
+}
+.header .nav-list .nav-list-right > span:nth-child(2) {
+  margin-left: 30px;
+}
+.header .nav-list .nav-list-right > span:nth-child(2) img {
+  height: 16px;
+  vertical-align: -8%;
+  margin-right: 5px;
+}

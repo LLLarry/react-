@@ -1,0 +1,53 @@
+@import '../../style/default.less'; 
+.header {
+    background-color: @colorM;
+    .userLine {
+        padding: 0 20px;
+        text-align: right;
+        a {
+            color: @colorA;
+            margin-left: 40px;
+        }
+        line-height: 4em;
+        border-bottom: 1px solid @colorA;
+    }
+    .nav-list {
+        padding: 0 20px;
+        text-align: center;
+        line-height: 3em;
+        align-items: center;
+        .nav-list-left {
+            position: relative;
+            span {
+                font-size: @fontC;
+                &:after {
+                    content: '';
+                    position: absolute;
+                    border-top: 8px solid @colorM;
+                    border-right: 8px solid @colorM;
+                    border-bottom: 8px solid transparent;
+                    border-left: 8px solid transparent;
+                    transform-origin: right top;
+                    transform: rotate(135deg);
+                    left: calc(50% - 18px);
+                    bottom: -26px;
+                }
+            }
+        }
+        .nav-list-right {
+            text-align: right;
+            &>span {
+                &:nth-child(2){
+                    margin-left: 30px;
+                    img {
+                        height: 16px;
+                        vertical-align: -8%;
+                       
+                        margin-right: 5px;
+                    }
+                }
+            }
+        }
+    }
+    
+}
