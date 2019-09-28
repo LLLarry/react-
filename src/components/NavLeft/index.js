@@ -1,5 +1,6 @@
 import React from 'react'
 import {Menu,Icon} from 'antd'
+import {NavLink} from 'react-router-dom'
 import './index.less'
 // 引进菜单列表
 import menuConfig from '../../config/menuConfig'
@@ -22,7 +23,10 @@ export default class NavLeft extends React.Component {
                 )
                
              }
-             return <Menu.Item key={item.key}>{item.title}</Menu.Item> //这里是没有下面的子元素了
+             return <Menu.Item key={item.key}>
+                 {/* 包裹一层 NavLink 进行跳转*/}
+                 <NavLink to={item.key}> {item.title} </NavLink> 
+             </Menu.Item> //这里是没有下面的子元素了
         })
     }
     render(){
