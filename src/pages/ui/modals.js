@@ -18,6 +18,15 @@ export default class Modals extends React.Component {
             [type]: false
         })
     }
+    // 处理confirm
+    handleConfirm= (type)=>{
+        Modal[type]({
+            title: '提示',
+            content: '确认提交订单吗？',
+            okText: '确认',
+            cancelText: '取消',
+          });
+    } 
     render(){
       return(
             <div className="modals">
@@ -71,6 +80,13 @@ export default class Modals extends React.Component {
                     >
                     <p>距离顶部20px</p>
                 </Modal>
+
+                <Card title="信息确认框">
+                    <Button type="primary" onClick={()=>{this.handleConfirm('confirm')}}>Confirm</Button>
+                    <Button type="primary" onClick={()=>{this.handleConfirm('info')}}>Info</Button>
+                    <Button type="primary" onClick={()=>{this.handleConfirm('success')}}>Success</Button>
+                    <Button type="primary" onClick={()=>{this.handleConfirm('warning')}}>Warning</Button>
+                </Card>
             </div>
         )
     }
