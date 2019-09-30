@@ -55,7 +55,7 @@ export default class Gallery extends React.Component {
                     onCancel={()=> this.setState({visible: false})}
                     footer={null}
                     >
-                   <img src={this.state.imgUrl} style={{width: "100%"}} ></img>
+                   <img src={this.state.imgUrl} style={{width: "100%"}} alt=""></img>
                 </Modal>
             </div>
         )
