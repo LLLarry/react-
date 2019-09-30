@@ -1,9 +1,15 @@
 .button button,
-.modals button {
+.modals button,
+.notification button,
+.message button,
+.tab button {
   margin-right: 10px;
 }
 .button .ant-card,
-.modals .ant-card {
+.modals .ant-card,
+.notification .ant-card,
+.message .ant-card,
+.tab .ant-card {
   margin-bottom: 20px;
 }
 /* modals */
