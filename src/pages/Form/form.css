@@ -1,0 +1,13 @@
+.form button {
+  margin-right: 10px;
+}
+.form .ant-card {
+  margin-bottom: 20px;
+}
+.form .form1 {
+  display: inline-flex;
+  align-items: center;
+}
+.form .form2 {
+  width: 300px;
+}

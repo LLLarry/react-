@@ -29,6 +29,15 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+
+    <!-- 这个是自定义加载时候的图标，当请求的时候显示加载的图标，当加载完毕的时候，图标隐藏 -->
+    <div class="ajax-loading" id="ajaxLoading" style="display: none;">
+        <div class="overlay"></div>
+        <div class="loading">
+            <img src="https://media.number-7.cn/ebike-h5/static/images/common/loading.gif" alt="">
+            <span>加载中，请稍后...</span>
+        </div>
+    </div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.

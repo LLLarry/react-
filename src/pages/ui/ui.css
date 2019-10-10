@@ -2,14 +2,16 @@
 .modals button,
 .notification button,
 .message button,
-.tab button {
+.tab button,
+.carousel button {
   margin-right: 10px;
 }
 .button .ant-card,
 .modals .ant-card,
 .notification .ant-card,
 .message .ant-card,
-.tab .ant-card {
+.tab .ant-card,
+.carousel .ant-card {
   margin-bottom: 20px;
 }
 /* modals */
