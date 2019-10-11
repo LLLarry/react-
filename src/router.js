@@ -14,6 +14,7 @@ import Carousel from './pages/ui/carousel'
 import FormPage from './pages/Form/form'
 import Reg from './pages/Form/register'
 import BasicTable from './pages/Table/basicTable'
+import HeightTable from './pages/Table/heightTable'
 export default class IRouter extends React.Component {
     render(){
         return(
@@ -35,6 +36,7 @@ export default class IRouter extends React.Component {
                                 <Route path="/admin/form/login" component={FormPage}></Route>
                                 <Route path="/admin/form/reg" component={Reg}></Route>
                                 <Route path="/admin/table/basic" component={BasicTable}></Route>
+                                <Route path="/admin/table/high" component={HeightTable}></Route>
                                 <Route component={NoMatch}></Route>
                                 {/* 404组件放到最后，当地址栏的路径为/admin/*时都能匹配到404组件，Switch中，前面的都没匹配到，那么只显示404组件 */}
                             </Switch>

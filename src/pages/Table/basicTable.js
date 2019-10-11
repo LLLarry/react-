@@ -1,12 +1,19 @@
 import React from 'react'
 import {Card,Table,Button,Modal, message} from 'antd'
+import Util from '../../utils/utils'
 import Axios from '../../axios'
 
 export default class BasicTable extends React.Component {
     state= {
         dataSource2: [],
         dataSource3: [],
-        selectedRowKeysCheckbox:[]
+        selectedRowKeysCheckbox:[],
+        dataSource5: [],
+        pagination: {}
+    }
+    // 因为req对象中的数据不需要渲染dom 所以定义的时候不需要设置到state中，赋值的时候也不需要this.setState({})进行赋值，直接this.req.page就行了
+    req= { //定义req对象，page属性默认为1
+        page: 1
     }
     componentWillMount(){
         const data= [
@@ -56,7 +63,23 @@ export default class BasicTable extends React.Component {
         }).catch(err=>{
             console.log(err)
         })
+
+        this.request()
         
+    }
+    request= ()=>{
+        Axios.ajax({
+            url: '/paginationTab',
+            param: {
+                current: this.req.page
+            },
+        }).then(res=>{
+            this.setState({
+                dataSource5: res,
+            })
+        }).catch(err=>{
+            console.log(err)
+        })
     }
     handleOnChange= (selectedRowKeys,selectedRows)=>{ //处理表格单选框发生变化是的回调
         console.log(selectedRowKeys,selectedRows) //selectedRowKeys 是选择项的数组 [4] , selectedRows是选择项的详细信息数组 [{id: 4, sex: 1, userName: "武敏", age: 18, like: Array(2), …}]
@@ -96,6 +119,7 @@ export default class BasicTable extends React.Component {
         })
     }
 
+
     handleDeleteCheckbox= ()=>{
         let {selectedRowKeysCheckbox}= this.state
         Modal.info({
@@ -103,7 +127,12 @@ export default class BasicTable extends React.Component {
             content: JSON.stringify(selectedRowKeysCheckbox)
         });
     }
-    
+    //页码改变的回调，参数是改变后的页码及每页条数
+    handlePagiationCharge= (page, pageSize)=>{ //改变后的页码，以及每页的条数
+        console.log(page, pageSize)
+        this.req.page= page
+        this.request()
+    }
     render(){
         // 处理复选框表格
         const {selectedRowKeysCheckbox}= this.state //es6解构语法
@@ -201,7 +230,7 @@ export default class BasicTable extends React.Component {
             }
 
 
-                { //判断dataSource4有没有数据，有就加载，没有就不加载 “动态渲染表格”组件
+            { //判断dataSource4有没有数据，有就加载，没有就不加载 “动态渲染表格”组件
                 this.state.dataSource3.length > 0 ? ( 
                         <Card title="复选-表格" style={{margin: '10px 0'}}>
                             <div style={{marginBottom: 10}}>
@@ -211,6 +240,30 @@ export default class BasicTable extends React.Component {
                             columns={columns} 
                             dataSource={this.state.dataSource4}
                             rowSelection= {rowSelection}
+                           onRow= {
+                                (record)=>{ //record是每一项详细信息
+                                    return {
+                                        onClick: ()=>this.handleTableClickCheckbox(record) //处理点击表格的时候，将点击的这一项详细给传过去
+                                    }
+                                }
+                                
+                           }
+                            > 
+                            </Table>
+                        </Card>) : ''
+            }
+
+            { //判断dataSource4有没有数据，有就加载，没有就不加载 “动态渲染表格”组件
+                this.state.dataSource3.length > 0 ? ( 
+                        <Card title="分页-表格" style={{margin: '10px 0'}}>
+                            <div style={{marginBottom: 10}}>
+                                <Button type="primary" onClick={this.handleDeleteCheckbox}>删除</Button>
+                            </div>
+                            <Table 
+                            columns={columns} 
+                            dataSource={this.state.dataSource4}
+                            rowSelection= {rowSelection}
+                            pagination= {Util.pagiationFn(this.state.dataSource5,this.handlePagiationCharge)}
                            onRow= {
                                 (record)=>{ //record是每一项详细信息
                                     return {

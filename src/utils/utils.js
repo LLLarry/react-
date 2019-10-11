@@ -18,5 +18,19 @@ export default {
             return `${Y}-${M}-${D}`
         }
         return `${Y}-${M}-${D} ${h}:${m}:${s}`
+    },
+    pagiationFn(data,callback){ //data是后台传过来的数据，回调是改变之后的回调
+       return {
+            current: data.current || 1, //当钱页数1
+            total: data.total,
+            pageSize: 5, //每页条数
+            showQuickJumper: true, //是否可以快速跳转至某页
+            showSizeChanger: true,  //是否可以改变 pageSize
+            onChange: callback,
+            showTotal: function(total, range){
+                console.log(total, range) //当
+                return `共${total}条数据，当前页数${range[0]}，每页数据条数${range[1]}`
+            }
+        }
     }
 }
